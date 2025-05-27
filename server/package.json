@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  },
+  "scripts": {
+    "start": "nodemon --ext js,mjs,cjs,json server.js",
+    "dev": "nodemon --ext js,mjs,cjs,json server.js"
+  }
+}

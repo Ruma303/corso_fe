@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Luca Rossi",
+    "email": "luca.rossi@example.com",
+    "age": 28,
+    "role": "admin",
+    "active": true
+  },
+  {
+    "id": 2,
+    "name": "Giulia Bianchi",
+    "email": "giulia.bianchi@example.com",
+    "age": 32,
+    "role": "user",
+    "active": true
+  },
+  {
+    "id": 3,
+    "name": "Marco Verdi",
+    "email": "marco.verdi@example.com",
+    "age": 24,
+    "role": "user",
+    "active": false
+  },
+  {
+    "id": 4,
+    "name": "Sara Neri",
+    "email": "sara.neri@example.com",
+    "age": 29,
+    "role": "moderator",
+    "active": true
+  },
+  {
+    "id": 5,
+    "name": "Davide Russo",
+    "email": "davide.russo@example.com",
+    "age": 35,
+    "role": "user",
+    "active": true
+  },
+  {
+    "id": 6,
+    "name": "Elena Gallo",
+    "email": "elena.gallo@example.com",
+    "age": 27,
+    "role": "user",
+    "active": false
+  },
+  {
+    "id": 7,
+    "name": "Francesco Fontana",
+    "email": "francesco.fontana@example.com",
+    "age": 31,
+    "role": "admin",
+    "active": true
+  },
+  {
+    "id": 8,
+    "name": "Martina Greco",
+    "email": "martina.greco@example.com",
+    "age": 26,
+    "role": "user",
+    "active": true
+  },
+  {
+    "id": 9,
+    "name": "Alessandro Conti",
+    "email": "alessandro.conti@example.com",
+    "age": 30,
+    "role": "moderator",
+    "active": false
+  },
+  {
+    "id": 10,
+    "name": "Chiara Moretti",
+    "email": "chiara.moretti@example.com",
+    "age": 23,
+    "role": "user",
+    "active": true
+  }
+]

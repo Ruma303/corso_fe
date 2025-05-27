@@ -6,7 +6,7 @@
         {
           "shouldRunCommands": false, //* Se impostato su true, i comandi sotto verranno eseguiti all'avvio del terminale
           "restoreTerminals.artificialDelayMilliseconds": 1000, //! Ritardo di attivazione terminale
-          "name": "My terminal", // Terminale dove scriverai
+          "name": "My terminal", // Terminale dove possiamo scrivere comandi personalizzati
           "commands": [
             "",
             ""
@@ -22,7 +22,7 @@
           "name": "Server", // Terminale per avviare il server Node.js
           "commands": [
             "cd server", // Comando per entrare nella cartella del server
-            "npm run dev:server" // Comando per avviare il server in modalità sviluppo
+            "npm run dev" // Comando per avviare il server in modalità sviluppo
           ]
         }
       ]

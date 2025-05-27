@@ -1,6 +1,8 @@
 # Corso front end 2025
 
 >Questo contenuto è costantemente in aggiornamento e potrebbe subire modifiche nel tempo. Si consiglia di controllare frequentemente per eventuali aggiornamenti o nuove risorse.
+>
+>Al momento, tutti i contenuti sono su un'unico branch `main`, ma in futuro potrebbero essere creati branch specifici per ogni lezione o argomento trattato.
 
 Benvenuti al corso di front end 2025!
 
@@ -79,13 +81,14 @@ Ecco alcune delle più utili:
 ---
 
 # Referenze
+
+## Documentazioni consigliate
+
 - [MDN Web Docs](https://developer.mozilla.org/it/) - La documentazione ufficiale di Mozilla per HTML, CSS e JavaScript.
 - [W3Schools](https://www.w3schools.com/) - Un sito web che offre tutorial e riferimenti su HTML, CSS, JavaScript e altro.
 - [CSS Tricks](https://css-tricks.com/) - Un sito web che offre articoli, guide e risorse su CSS e design web.
 - [Stack Overflow](https://stackoverflow.com/) - Una comunità di sviluppatori dove è possibile trovare risposte a domande comuni e condividere conoscenze.
 - [FreeCodeCamp](https://www.freecodecamp.org/) - Una piattaforma di apprendimento online che offre corsi gratuiti su HTML, CSS, JavaScript e altro.
-- [Codecademy](https://www.codecademy.com/) - Una piattaforma di apprendimento online che offre corsi interattivi su HTML, CSS, JavaScript e altro.
-- [Frontend Masters](https://frontendmasters.com/) - Una piattaforma di apprendimento online che offre corsi avanzati su JavaScript, CSS e altro.
 
 ## Crediti
 

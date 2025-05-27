@@ -23,6 +23,7 @@ Questo è un repository che contiene tutte le risorse, le lezioni e gli esempi u
 - È fortemente consigliato studiare anche al di fuori delle lezioni, approfondendo gli argomenti trattati e cercando risorse aggiuntive che sono indicate nella cartella `docs`. Tra le competenze fondamentali ci sono:
   - Terminali / Shell / Bash
   - Git
+  - Node.js e NPM
 
 - Una volta installato Git, clonare questo repository con il comando tramite un terminale:
 
@@ -81,7 +82,7 @@ Ecco alcune delle più utili:
 
 ## Altri software consigliati
 
-- [Node.js](https://nodejs.org/) - Un ambiente di esecuzione JavaScript che ci permette di eseguire JavaScript al di fuori del browser.
+- [Node.js](https://nodejs.org/en/download) - Un ambiente di esecuzione JavaScript che ci permette di eseguire JavaScript al di fuori del browser.
 - [Git](https://git-scm.com/) - Un sistema di controllo versione distribuito che ci permette di tenere traccia delle modifiche al codice e collaborare con altri sviluppatori.
 - [Postman](https://www.postman.com/) - Uno strumento per testare le API e inviare richieste HTTP in modo semplice e intuitivo.
 - [XAMPP](https://www.apachefriends.org/index.html) - Un pacchetto software che include Apache, MySQL, PHP e Perl, utile per lo sviluppo di applicazioni web.

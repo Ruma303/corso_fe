@@ -24,6 +24,12 @@ Questo è un repository che contiene tutte le risorse, le lezioni e gli esempi u
   - Terminali / Shell / Bash
   - Git
 
+- Una volta installato Git, clonare questo repository con il comando tramite un terminale:
+
+```sh
+git clone https://github.com/Ruma303/corso_fe.git
+```
+
 ---
 
 # Software richiesti / consigliati

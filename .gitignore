@@ -1,0 +1,88 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output
+dist/
+build/
+out/
+coverage/
+tmp/
+temp/
+.cache/
+.next/
+.svelte-kit/
+.angular/
+.storybook/
+.cypress/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDEs and editors
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Misc
+*.local
+*.log
+*.tgz
+*.swp
+*.swo
+
+# React Native
+.expo/
+*.expo/
+*.expo-shared/
+
+# TypeScript
+*.tsbuildinfo
+
+# Parcel
+.cache/
+.parcel-cache/
+
+# Storybook
+out-storybook/
+
+# VSCode settings
+.history/
+
+# Mac system files
+.AppleDouble
+.LSOverride
+
+# Optional npm cache directory
+.npm/
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Angular
+.angular/cache/
+.angular/config.json
+
+# JetBrains IDEs
+*.iml
+.idea/
+out/

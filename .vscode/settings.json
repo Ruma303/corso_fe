@@ -1,0 +1,31 @@
+{
+  "restoreTerminals.runOnStartup": true, // Impostando questo comando di sotto su true si avvieranno questi terminali sotto all'avvio di questa repo.
+  "restoreTerminals.terminals": [
+    {
+      "splitTerminals": [
+        {
+          "shouldRunCommands": false, //* Se impostato su true, i comandi sotto verranno eseguiti all'avvio del terminale
+          "restoreTerminals.artificialDelayMilliseconds": 1000, //! Ritardo di attivazione terminale
+          "name": "My terminal", // Terminale dove scriverai
+          "commands": [
+            "",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [
+        {
+          "shouldRunCommands": false,
+          "restoreTerminals.artificialDelayMilliseconds": 1000,
+          "name": "Server", // Terminale per avviare il server Node.js
+          "commands": [
+            "cd server", // Comando per entrare nella cartella del server
+            "npm run dev:server" // Comando per avviare il server in modalità sviluppo
+          ]
+        }
+      ]
+    },
+  ]
+}

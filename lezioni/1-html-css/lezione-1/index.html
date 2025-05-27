@@ -58,14 +58,28 @@
       <b>in questo modo</b>,
       <em>corsivo</em> o <i>corsivo colà</i>,
       o ancora <u>sottolineato</u>.
-
     </p>
+
+    <h3>Link e bottoni</h3>
     <a href="https://www.google.com" target="_blank" title="Vai a Google">Visita Google</a>
     <br>
     <button onclick="alert('Mi hai cliccato!')">Cliccami!</button>
-    <br>
+
+    <h3>Assets: immagini, video, etc</h3>
+    <p>Immagine da link esterno:</p>
     <img src="https://picsum.photos/200/300" alt="Immagine di esempio" title="Immagine di esempio">
+
+    <p>Immagine da file locale (presente nel progetto):</p>
+    <img src="../../../assets/images/image.jpg" alt="Immagine locale" title="Immagine locale">
+
+    <p>Video incorporato da YouTube:</p>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/PLvmBjbzadc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+    <p>Video presente localmente (come le immagini)</p>
+    <video width="320" height="240" controls>
+      <source src="../../../assets/videos/video.mp4" type="video/mp4">
+      Il tuo browser non supporta il video tag.
+    </video>
 
   </article>
 

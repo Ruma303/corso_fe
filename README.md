@@ -12,15 +12,17 @@ Questo è un repository che contiene tutte le risorse, le lezioni e gli esempi u
 
 - Per ogni lezione, troverete un file `README.md` che contiene le istruzioni e le risorse necessarie per completare gli esercizi.
 
+- Tra le prime cose da fare, è consigliato controllare la cartella (directory) `docs` che contiene configurazioni ottimali, documentazioni interessanti e risorse utili per il corso.
+
+- La cartella `assets` contiene immagini, file e risorse utilizzate durante il corso e comuni a tutti i progetti. Potete utilizzare queste risorse nei vostri progetti o come riferimento.
+
 - Per ogni software è consigliato documentarsi e leggere la documentazione ufficiale, che è sempre la fonte più affidabile e aggiornata. Questo perché le procedure di installazione e configurazione possono variare nel tempo e tra le diverse versioni del software.
 
 - Per qualsiasi domanda o problema, potete contattare il docente del corso o aprire una issue in questo repository.
 
-- Quando si studia una lezione è consigliato disabilitare qualsiasi aiuto per evitare di dipendere da esso e imparare a risolvere i problemi in modo autonomo. L'uso è consigliato solo come verifica alla fine di quanto appreso durante le lezioni, o dopo un'esercitazione.
-
-- È fortemente consigliato studiare anche al di fuori delle lezioni, approfondendo gli argomenti trattati e cercando risorse aggiuntive. La programmazione è un campo in continua evoluzione e la pratica costante è fondamentale per migliorare le proprie competenze. Tra le competenze fondamentali ci sono:
-  - Git
+- È fortemente consigliato studiare anche al di fuori delle lezioni, approfondendo gli argomenti trattati e cercando risorse aggiuntive che sono indicate nella cartella `docs`. Tra le competenze fondamentali ci sono:
   - Terminali / Shell / Bash
+  - Git
 
 ---
 
@@ -34,7 +36,7 @@ Questo è un repository che contiene tutte le risorse, le lezioni e gli esempi u
 
 Ecco alcune valide alternative:
 
-- [WebStorm](https://www.jetbrains.com/webstorm/)
+- [WebStorm](https://www.jetbrains.com/webstorm/download)
 - [Sublime Text](https://www.sublimetext.com/)
 - [Zed](https://zed.dev/)
 

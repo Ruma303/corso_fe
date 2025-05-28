@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lezione 2 - HTML + CSS</title>
+
+  <!-- Stili CSS separati -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #0039d5;
+    }
+
+    p {
+      color: #555;
+    }
+
+    strong {
+      color: #000;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 20px 0;
+      border: 1px solid #555;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    [type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button[type="reset"] {
+      background-color: #f39027;
+    }
+
+    fieldset {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    legend {
+      font-weight: bold;
+      color: #d500bc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Stili CSS inline tramite l'attributi style -->
+  <h1 style="color:blueviolet; font-weight:700">Stile inline</h1>
+
+  <h1>Stile dal tag style nell'head</h1>
+
+  <p>Uso delle tabelle ed input</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Colonna 1</th>
+        <th>Colonna 2</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          <label for="">Nome</label>
+          <input type="text">
+        </td>
+        <td>
+          <label for="">Cognome</label>
+          <input type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">Descrizione</label>
+          <textarea rows="4" cols="50"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <fieldset>
+            <legend>Scegli il tuo sesso:</legend>
+            <input type="radio" name="sesso" id="maschio" value="1">
+            <label for="maschio">Maschio</label>
+            <input type="radio" name="sesso" id="femmina" value="2">
+            <label for="femmina">Femmina</label>
+            <input type="radio" name="sesso" id="altro" value="3">
+            <label for="altro">Altro</label>
+          </fieldset>
+        </td>
+      </tr>
+        <td>
+          <fieldset>
+            <legend style="color:#00d01f">Seleziona i tuoi hobby:</legend>
+            <input type="checkbox" id="sport" name="hobby" value="sport">
+            <label for="sport">Sport</label><br>
+            <input type="checkbox" id="musica" name="hobby" value="musica">
+            <label for="musica">Musica</label><br>
+            <input type="checkbox" id="arte" name="hobby" value="arte">
+            <label for="arte">Arte</label><br>
+          </fieldset>
+        </td>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><button type="button">Salva form</button></td>
+        <td colspan="1"><button type="reset">Resetta</button></td>
+      </tr>
+      <tr>
+        <td colspan="3" style="background-color:#27f3df; padding: 0.3em 2em;">Footer della tabella</td>
+      </tr>
+    </tfoot>
+  </table>
+<script>
+  // Esempio di script JavaScript
+  document.querySelector('button[type="button"]').addEventListener('click', function() {
+    alert('Dati salvati!');
+  });
+
+  document.querySelector('button[type="reset"]').addEventListener('click', function() {
+    alert('Form resettato!');
+  });
+</script>
+</body>
+
+</html>

@@ -69,11 +69,39 @@
       font-weight: bold;
       color: #d500bc;
     }
+
+    ul {
+      display: flex;
+      justify-content: space-around;
+      background-color: #f0f0f0;
+      list-style-type: none;
+      padding: 20px;
+    }
+
+    a:visited {
+      color: #00b106;
+    }
+
+    a:active {
+      color: #c806ea;
+    }
   </style>
+
+<script src="./script.js" defer></script>
 </head>
 
 <body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../lezione-1/index.html">Lezione 1</a></li>
+        <li><a href="../lezione-2/index.html">Lezione 2</a></li>
+        <li><a href="../../">Tutte le lezioni</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <main>
   <!-- Stili CSS inline tramite l'attributi style -->
   <h1 style="color:blueviolet; font-weight:700">Stile inline</h1>
 
@@ -141,16 +169,7 @@
       </tr>
     </tfoot>
   </table>
-<script>
-  // Esempio di script JavaScript
-  document.querySelector('button[type="button"]').addEventListener('click', function() {
-    alert('Dati salvati!');
-  });
-
-  document.querySelector('button[type="reset"]').addEventListener('click', function() {
-    alert('Form resettato!');
-  });
-</script>
+  </main>
 </body>
 
 </html>

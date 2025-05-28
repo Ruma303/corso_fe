@@ -10,15 +10,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Titolo della scheda / TAB sul browser -->
   <title>Lezione 1 - Introduzione a HTML</title>
+
+  <style>
+    ul {
+      display: flex;
+      justify-content: space-around;
+      background-color: #f0f0f0;
+      list-style-type: none;
+      padding: 20px;
+    }
+  </style>
 </head>
 
 <!-- Corpo visibile nel browser -->
 
 <body>
-  <h1>Benvenuti alla Lezione 1 di HTML</h1>
-  <h2>What's my destiny DRANGONBALL</h2>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../lezione-1/index.html">Lezione 1</a></li>
+        <li><a href="../lezione-2/index.html">Lezione 2</a></li>
+        <li><a href="../../">Tutte le lezioni</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- I commenti
+  <main>
+
+    <h1>Benvenuti alla Lezione 1 di HTML</h1>
+    <h2>What's my destiny DRANGONBALL</h2>
+
+    <!-- I commenti
     possono
     essere
     scritti
@@ -26,72 +48,74 @@
     linee
   -->
 
-  <!-- Alcuni tag sono auto chiudenti. Non necessitano di essere chiusi ma hanno questa sintassi: -->
-  <br />
-  <hr />
+    <!-- Alcuni tag sono auto chiudenti. Non necessitano di essere chiusi ma hanno questa sintassi: -->
+    <br />
+    <hr />
 
-  <!-- Equivalgono a due tag che si aprono e chiudono, come nell'esempio: -->
-  <hr>
-  </hr>
+    <!-- Equivalgono a due tag che si aprono e chiudono, come nell'esempio: -->
+    <hr>
+    </hr>
 
-  <!-- I tag spesso vengono annidati tra loro. Esempi -->
+    <!-- I tag spesso vengono annidati tra loro. Esempi -->
 
-  <section>
-    <div>
+    <section>
+      <div>
+        <p>
+        <ol>
+          <li>Elemento n: 1</li>
+          <li>Elemento n: 2</li>
+          <li>Elemento n: 3</li>
+          <li>Elemento n: 4</li>
+          <li>Elemento n: 5</li>
+        </ol>
+        </p>
+      </div>
+    </section>
+
+    <!-- Ogni tag ha un set di attributi utili che espandono le loro funzionalità -->
+
+    <article>
       <p>
-      <ol>
-        <li>Elemento n: 1</li>
-        <li>Elemento n: 2</li>
-        <li>Elemento n: 3</li>
-        <li>Elemento n: 4</li>
-        <li>Elemento n: 5</li>
-      </ol>
+        Questo è un paragrafo di esempio. Puoi usare i tag HTML per formattare il testo, come <strong>grassetto</strong>
+        o
+        <b>in questo modo</b>,
+        <em>corsivo</em> o <i>corsivo colà</i>,
+        o ancora <u>sottolineato</u>.
       </p>
-    </div>
-  </section>
 
-  <!-- Ogni tag ha un set di attributi utili che espandono le loro funzionalità -->
+      <h3>Link e bottoni</h3>
+      <a href="https://www.google.com" target="_blank" title="Vai a Google">Visita Google</a>
+      <br>
+      <button onclick="alert('Mi hai cliccato!')">Cliccami!</button>
 
-  <article>
-    <p>
-      Questo è un paragrafo di esempio. Puoi usare i tag HTML per formattare il testo, come <strong>grassetto</strong> o
-      <b>in questo modo</b>,
-      <em>corsivo</em> o <i>corsivo colà</i>,
-      o ancora <u>sottolineato</u>.
-    </p>
+      <h3>Assets: immagini, video, etc</h3>
+      <p>Immagine da link esterno:</p>
+      <img src="https://picsum.photos/200/300" alt="Immagine di esempio" title="Immagine di esempio">
 
-    <h3>Link e bottoni</h3>
-    <a href="https://www.google.com" target="_blank" title="Vai a Google">Visita Google</a>
-    <br>
-    <button onclick="alert('Mi hai cliccato!')">Cliccami!</button>
+      <p>Immagine da file locale (presente nel progetto):</p>
+      <img src="../../../assets/images/image.jpg" alt="Immagine locale" title="Immagine locale">
 
-    <h3>Assets: immagini, video, etc</h3>
-    <p>Immagine da link esterno:</p>
-    <img src="https://picsum.photos/200/300" alt="Immagine di esempio" title="Immagine di esempio">
+      <p>Video incorporato da YouTube:</p>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/PLvmBjbzadc" title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
 
-    <p>Immagine da file locale (presente nel progetto):</p>
-    <img src="../../../assets/images/image.jpg" alt="Immagine locale" title="Immagine locale">
+      <p>Video presente localmente (come le immagini)</p>
+      <video width="320" height="240" controls>
+        <source src="../../../assets/videos/video.mp4" type="video/mp4">
+        Il tuo browser non supporta il video tag.
+      </video>
 
-    <p>Video incorporato da YouTube:</p>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/PLvmBjbzadc" title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen></iframe>
+    </article>
 
-    <p>Video presente localmente (come le immagini)</p>
-    <video width="320" height="240" controls>
-      <source src="../../../assets/videos/video.mp4" type="video/mp4">
-      Il tuo browser non supporta il video tag.
-    </video>
+    <blockquote>
+      <p>Questa è una citazione di esempio. Puoi usare il tag <code>&lt;blockquote&gt;</code> per evidenziare citazioni
+        o
+        testi importanti.</p>
+    </blockquote>
 
-  </article>
-
-  <blockquote>
-    <p>Questa è una citazione di esempio. Puoi usare il tag <code>&lt;blockquote&gt;</code> per evidenziare citazioni o
-      testi importanti.</p>
-  </blockquote>
-
-  <pre> Testo preformattato
+    <pre> Testo preformattato
     <p>
       Questo è un esempio di codice JavaScript:
     </p>
@@ -101,21 +125,29 @@
       }
     </code>
   </pre>
-  <mark> Testo evidenziato </mark>
+    <mark> Testo evidenziato </mark>
 
-  <blockquote>
-    <p>Questo è un blocco di citazione. Puoi usarlo per citare testi o fonti.</p>
-  </blockquote>
+    <blockquote>
+      <p>Questo è un blocco di citazione. Puoi usarlo per citare testi o fonti.</p>
+    </blockquote>
 
-  <address>
-    <p>Contatti: <a href="mailto:test@email.com">Invia email</a></p>
-  </address>
+    <address>
+      <p>Contatti: <a href="mailto:test@email.com">Invia email</a></p>
+    </address>
+
+  </main>
+
 
   <footer>
     <p>Questo è il piè di pagina della pagina web.</p>
 
+    <h2>Preview della seconda pagina</h2>
+    <iframe src="../lezione-2/index.html" title="preview" style="border: 3px solid #ccc;"
+      frameborder="0" width="100%" height="500px"
+      allowfullscreen></iframe>
+
     <strong>
-      <em>Continuate a studiare ed esplorare i tag ed attributi</em>
+      <em>Continuare a studiare ed esplorare i tag ed attributi</em>
       <br>
       <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">Documentazione consigliata</a>
     </strong>

@@ -10,14 +10,12 @@ Per quanto riguarda gli utenti Linux e MacOS non c'è problema in quanto le loro
 
 I vari programmi che impareremo ad usare (come Git) sono tutti basati sulla Unix Like, il che significa che dovete utilizzare l'interprete e la sintassi corretti.
 
-Consiglio quindi a chiunque utilizzi Windows di installare Git Bash. È una shell che supporta la sintassi Unix Like e con il quale potete fare pratica in attesa di conoscere Git.
+## Installazione di Git + Git Bash
 
-Ho trovato questo video dove mostra come installarlo, penso funzioni https://www.youtube.com/watch?v=ankVyh-ELTo altrimenti, dovreste installare direttamente Git e, durante il processo di installazione, spuntare la casella per installare Git Bash. Questo però sarebbe meglio farlo in un secondo momento in quanto l'installazione di Git è un po' arzigogolata.
+**Consiglio quindi a chiunque utilizzi Windows di installare Git Bash**. È una shell che supporta la sintassi Unix Like e con il quale potete fare pratica in attesa di conoscere Git. [Questo video](https://www.youtube.com/watch?v=ankVyh-ELTo) spiega come installare Git Bash su Windows.
 
-Una volta che avete installato Git Bash potrete aprirlo da PowerShell scegliendo GitBash come shell. A questo punto potete fare pratica con i comandi con questo corso gratuito https://www.udemy.com/course/linux-comandi-base/learn/lecture/16444940#overview vi bastano le prime 2-3 sezioni.
+Una volta che avete installato Git Bash potrete aprirlo da PowerShell scegliendo GitBash come shell. A questo punto potete fare pratica con i comandi con [questo corso gratuito](https://www.udemy.com/course/linux-comandi-base/learn/lecture/16444940#overview) vi bastano le prime 2-3 sezioni.
 
----
+## Pratica con Git
 
-# Altre risorse
-
-- [Corso consigliato](https://youtu.be/wPAE9-DdMtI?si=de3pwmgI09eJVcif) - Corso introduttivo GIT per principianti di Edoardo Midali
+Consiglio inoltre di fare pratica con questo [Corso introduttivo di Git](https://youtu.be/wPAE9-DdMtI?si=de3pwmgI09eJVcif) per principianti di Edoardo Midali. Non è necessario approfondire tutto, ma è importante che capiate i concetti base e come si usano i comandi principali.

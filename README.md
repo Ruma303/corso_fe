@@ -1,4 +1,4 @@
-# Corso front end 2025
+# Corso front end web
 
 >Questo contenuto è costantemente in aggiornamento e potrebbe subire modifiche nel tempo. Si consiglia di controllare frequentemente per eventuali aggiornamenti o nuove risorse.
 >
@@ -6,7 +6,7 @@
 >
 >I file che finiscono in `.md` sono file di testo in formato Markdown, un linguaggio di markup leggero che permette di formattare il testo in modo semplice e leggibile. Questi file possono essere visualizzati direttamente su GitHub o in qualsiasi editor di testo che supporti il formato Markdown. Su Visual Studio Code, è possibile visualizzare i file Markdown in anteprima premendo `Ctrl + K V` (o `Cmd + K V` su macOS) o cliccando sull'icona di anteprima nella barra laterale.
 
-Benvenuti al corso di front end 2025!
+Benvenuti al corso di front end web!
 
 Questo è un repository che contiene tutte le risorse, le lezioni e gli esempi utilizzati durante il corso.
 
@@ -152,5 +152,3 @@ Ecco alcune delle più utili:
 ## Crediti
 
 - Autore e curatore del repository: [Matteo Emanuele Russo (Ruma303)](https://github.com/Ruma303)
-- Creatore lezioni [Maurizio Postiglione]
-- Corso finanziato da FormaTemp

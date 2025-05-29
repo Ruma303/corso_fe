@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      font-family: 'Lucida Sans';
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      color: #333;
+      font-size: 12px;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: flex-start;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 20px;
+      color: #fff;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      padding: 10px 20px;
+      background-color: #f60;
+      color: #fff;
+    }
+
+    #classic_menu {
+      display: block;
+    }
+
+    #hamburger_menu {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+
+      #classic_menu {
+        display: none;
+      }
+
+      #hamburger_menu {
+        display: block;
+        cursor: pointer;
+      }
+
+
+      nav ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 20px;
+        color: #fff;
+      }
+
+      #hamburger_menu #classic_menu_hamburger {
+        display: none;
+      }
+
+      #hamburger_menu:hover #classic_menu_hamburger {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div id="hamburger_menu" onclick="clickHamburger()">
+      ☰
+      <div id="classic_menu_hamburger">
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Chi siamo</a></li>
+            <li><a href="#">Contatti</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div id="classic_menu">
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Chi siamo</a></li>
+          <li><a href="#">Contatti</a></li>
+        </ul>
+      </nav>
+    </div>
+
+  </header>
+  <script>
+    function clickHamburger() {
+      const menu = document.getElementById('classic_menu_hamburger');
+      if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+      } else {
+        menu.style.display = 'block';
+      }
+    }
+    document.addEventListener('click', function (event) {
+      const menu = document.getElementById('classic_menu_hamburger');
+      const hamburger = document.getElementById('hamburger_menu');
+      if (!hamburger.contains(event.target) && !menu.contains(event.target)) {
+        menu.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+
+</html>
+
+</html>

@@ -8,12 +8,26 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
+    :root {
+      --primary-bg-color: aliceblue;
+      --secondary-bg-color: rgb(33, 35, 61);
+      --secondary-text-color: white;
+      --primary-text-color: #333;
+      --font-family: 'Lucida Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Lucida Sans';
       margin: 0;
       padding: 0;
-      background-color: #f0f0f0;
-      color: #333;
+      background-color: var(--primary-bg-color);
+      color: var(--primary-text-color);
       font-size: 12px;
     }
 
@@ -37,9 +51,13 @@
     }
 
     header {
-      padding: 10px 20px;
-      background-color: #f60;
-      color: #fff;
+      margin: 0;
+      padding-left: 10px;
+      padding-bottom: 0px;
+      padding-top: 5px;
+      background-color: var(--secondary-bg-color);
+      min-height: 30px;
+      color: var(--secondary-text-color);
     }
 
     #classic_menu {
@@ -48,6 +66,31 @@
 
     #hamburger_menu {
       display: none;
+    }
+
+    main {
+      background-color: var(--primary-bg-color);
+      min-height: calc(100vh - 60px);
+      height: auto;
+      margin: 0 px;
+      padding: 5px;
+      color: var(--primary-text-color);
+    }
+
+    footer {
+      display: flex;
+      justify-content: center;
+      min-height: fit-content;
+      max-height: 100px;
+      background-color: var(--secondary-bg-color);
+      margin: 0;
+      color: var(--secondary-text-color);
+    }
+
+    footer p {
+      padding: 10px;
+      font-size: 12px;
+      margin: 0;
     }
 
     @media (max-width: 600px) {
@@ -60,7 +103,6 @@
         display: block;
         cursor: pointer;
       }
-
 
       nav ul {
         display: flex;
@@ -119,7 +161,7 @@
 
   </main>
   <footer>
-    <p>©️ 2023 La mia azienda</p>
+    <p>©️ 2025 La mia azienda</p>
   </footer>
 
   <script>

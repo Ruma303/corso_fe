@@ -6,7 +6,7 @@ while (ripeti == "SI") {
   let base = rs.questionInt("Inserisci il numero della tabellina: ");
   console.log(`Tabellina del ${base}:`);
   let n = 1;
-let repeat = true;
+  let repeat = true;
   while (n <= 10) {
     console.log(`${base} x ${n} = ${base * n}`);
     n++;

@@ -1,23 +1,28 @@
 # Server Node.js con Express
 
-Il seguente è un esempio molto semplice di server in Node.js + framework Express.js che espone i seguenti endpoint:
+Il seguente è un esempio molto semplice di server in Node.js + framework Express.js.
+
+Per eseguire il server, è necessario avere Node.js installato, installare tutte le dipendenze `npm install` e poi eseguire il comando `npm run dev` oppure`npm run start`.
+
+I server vengono attivati con `nodemon` in modalità sviluppo, che consente il riavvio automatico del server ad ogni modifica del codice.
+
+Una volta avviato, il server sarà accessibile all'indirizzo `http://localhost:8000`.
+
+Gli endpoint esposti sono i seguenti:
 
 ```http
 GET `/` - Restituisce un messaggio di benvenuto.
-GET `/test` - Verifica lo status del server.
 GET `/api/users` - Restituisce un elenco di utenti.
 GET `/api/users/:name` - Restituisce un utente specifico.
 GET `/api/posts` - Restituisce un elenco di post.
 GET `/api/posts/:title` - Restituisce un post specifico cercato per titolo.
 ```
 
-Sono autorizzati solo metodi `GET` e le richieste sono accettate da qualunque origine (CORS) sulla porta `8000` (modificabile nel file `server.js`).
+Al momento, sono disponibili solo metodi `GET` e le richieste sono accettate da qualunque origine (CORS) sulla porta `8000` (modificabile nel file `server.js`).
+
+Il metodo `GET` consente di recuperare dati senza modificarli, rendendo l'API idonea per operazioni di sola lettura.
 
 Qualsiasi richiesta che non corrisponde a questi endpoint restituirà un errore **404 Not Found**.
-
-Per eseguire il server, è necessario avere Node.js installato, installare tutte le dipendenze `npm install` e poi eseguire il comando `npm run dev` oppure`npm run start`.
-
-I server vengono attivati con `nodemon` in modalità sviluppo, che consente il riavvio automatico del server ad ogni modifica del codice.
 
 ---
 

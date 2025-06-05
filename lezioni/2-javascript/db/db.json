@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Luca Rossi",
+    "email": "luca.rossi@example.com",
+    "age": 28,
+    "role": "admin",
+    "active": true
+  },
+  {
+    "id": 2,
+    "name": "Maria Bianchi",
+    "email": "maria.bianchi@example.com",
+    "age": 32,
+    "role": "user",
+    "active": true
+  }
+]

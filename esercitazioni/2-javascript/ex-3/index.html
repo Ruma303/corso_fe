@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Drag and Drop semplice</title>
   <style>
+    body {
+        user-select: none;
+    }
+
     .container {
       width: 300px;
       height: 200px;
@@ -14,6 +16,7 @@
       vertical-align: top;
       margin: 20px;
       padding: 10px;
+      user-select: none;
     }
 
     .draggable {
@@ -25,19 +28,35 @@
       line-height: 100px;
       margin: 10px;
       cursor: move;
+      user-select: none;
     }
   </style>
 </head>
-
 <body>
+
   <div class="container" id="contenitore1" ondrop="drop(event)" ondragover="allowDrop(event)">
     <div id="elemento" class="draggable" draggable="true" ondragstart="drag(event)">Trascinami</div>
   </div>
 
   <div class="container" id="contenitore2" ondrop="drop(event)" ondragover="allowDrop(event)">
-    <!-- FIUUUUI: CE LO METTO QUI LO SFILATINO -->
   </div>
 
-</body>
+  <script>
+    function allowDrop(event) {
+      event.preventDefault();
+    }
 
+    function drag(event) {
+      event.dataTransfer.setData("robaDaTrascinare", event.target.id);
+    }
+
+    function drop(event) {
+      event.preventDefault();
+      const data = event.dataTransfer.getData("robaDaTrascinare");
+      const elemento = document.getElementById(data);
+      event.target.appendChild(elemento);
+    }
+  </script>
+
+</body>
 </html>

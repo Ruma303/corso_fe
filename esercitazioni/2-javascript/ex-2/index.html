@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keyboard</title>
+  <style>
+    .row {
+      display: flex;
+      margin-bottom: 4px;
+    }
+
+    button {
+      height: 40px;
+      margin: 2px;
+      padding: 5px;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      background-color: #333;
+      color: #fff;
+      border-radius: 4px;
+      font-size: 12px;
+      border: none;
+    }
+
+    .key {
+      width: 40px;
+    }
+
+    .wide-1_5 {
+      width: 60px;
+    }
+
+    .wide-2 {
+      width: 80px;
+    }
+
+    .wide-3 {
+      width: 120px;
+    }
+
+    .space {
+      width: 267px;
+    }
+
+    .fn-spaces {
+      margin-right: 40px;
+    }
+
+    .right {
+      position: absolute;
+      right: 20px;
+    }
+
+    #keyboard {
+      position: relative;
+      max-width: 920px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+
+    #keyboard p {
+      font-family: sans-serif;
+      margin: 10px 0;
+    }
+
+    #keyboard-config {
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <section id="keyboard">
+    <div id="keyboard-config">
+      <div>
+        <label for="color-picker">Background color </label>
+        <input type="color" id="color-picker">
+      </div>
+
+      <div>
+        <label for="color-keycaps">Keycaps color </label>
+        <input type="color" id="color-keycaps">
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const section = document.querySelector('#keyboard');
+
+      const keys = [
+        ["ESC", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "Reset"],
+        ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "Backspace", "Delete"],
+        ["Tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "\\", "PgU"],
+        ["Caps Lock", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "Enter", "PgD"],
+        ["Shift", "<>", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "Shift-dx", "↑"],
+        ["Ctrl", "Win", "Alt", "Space", "Fn", "Ctrl", "←", "↓", "→"]
+      ];
+
+      const specialWidths = {
+        "ESC": "wide-1_5",
+        "Tab": "wide-1_5",
+        "Caps Lock": "wide-2",
+        "Shift": "wide-2",
+        "Shift-dx": "wide-3",
+        "Enter": "wide-3",
+        "Backspace": "wide-2",
+        "Delete": "wide-1_5",
+        "PgU": "wide-1_5",
+        "PgD": "wide-1_5",
+        "Ctrl": "wide-1_5",
+        "Alt": "wide-1_5",
+        "Fn": "wide-1_5",
+        "Win": "wide-1_5",
+        "Space": "space",
+        "←": "wide-1_5",
+        "→": "wide-1_5",
+        "↑": "wide-1_5",
+        "↓": "wide-1_5"
+      };
+
+      const rowContainers = keys.map(() => {
+        const rowDiv = document.createElement("div");
+        rowDiv.className = "row";
+        section.appendChild(rowDiv);
+        return rowDiv;
+      });
+
+      const tastiLineari = [];
+      keys.forEach((row, rowIndex) => {
+        row.forEach(key => {
+          tastiLineari.push({ key, rowIndex });
+        });
+      });
+
+      let currentIndex = 0;
+      const timer = setInterval(() => {
+        if (currentIndex >= tastiLineari.length) {
+          clearInterval(timer);
+          return;
+        }
+
+        const { key, rowIndex } = tastiLineari[currentIndex];
+
+        if (key === "") {
+          currentIndex++;
+          return;
+        }
+
+        const button = document.createElement("button");
+        button.textContent = key;
+        button.classList.add("key");
+
+        if (specialWidths[key]) {
+          button.classList.add(specialWidths[key]);
+        }
+
+        switch (key) {
+          case "ESC":
+          case "F4":
+          case "F8":
+          case "F12":
+          case "Fn":
+            button.classList.add("fn-spaces");
+            break;
+          case "Reset":
+          case "PgU":
+          case "PgD":
+          case "Delete":
+            button.classList.add("right");
+            break;
+        }
+
+        rowContainers[rowIndex].appendChild(button);
+        currentIndex++;
+      }, 0);
+
+      const info = document.createElement("p");
+      info.textContent = "Premi un tasto per visualizzare il testo";
+      info.style.fontStyle = "italic";
+      info.style.fontSize = "14px";
+      section.appendChild(info);
+
+      const paragraph = document.createElement("p");
+      section.appendChild(paragraph);
+
+      window.addEventListener("click", (event) => {
+        if (event.target.textContent === "Reset") {
+          paragraph.textContent = " ";
+        } else if (event.target.tagName === "BUTTON") {
+          paragraph.textContent += " " + event.target.textContent;
+        }
+      });
+
+      const colorPickerBackground = document.getElementById('color-picker');
+      colorPickerBackground.addEventListener('input', function () {
+        const selectedColor = colorPickerBackground.value;
+        section.style.backgroundColor = selectedColor;
+      });
+
+      const colorPickerKeycaps = document.getElementById('color-keycaps');
+      colorPickerKeycaps.addEventListener('input', function () {
+        const selectedColor = colorPickerKeycaps.value;
+        document.querySelectorAll('.key').forEach(key => {
+          key.style.backgroundColor = selectedColor;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

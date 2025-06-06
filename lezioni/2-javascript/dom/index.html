@@ -5,28 +5,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DOM Manipulation</title>
-  <script>
-    function coloraTitoli() {
-      let lista_colori = ["red", "green", "blue", "yellow", "purple", "orange"];
-
-      let HL = document.querySelectorAll("h1");
-      HL.forEach((element, index) => {
-        element.style.color = lista_colori[index];
-        element.textContent += ` ${index} della lista `;
-      })
-    }
-  </script>
 </head>
 
 <body>
+  <button onclick="generateTitles()">Genera titoli</button>
+  <button onclick="changeColor()">Colore random tutti i titoli</button>
   <h1>A</h1>
   <h1>B</h1>
   <h1>C</h1>
   <h1>D</h1>
   <h1>E</h1>
   <h1>F</h1>
+
   <script>
-    coloraTitoli();
+    let lista_colori = ["red", "green", "blue", "yellow", "purple", "orange"];
+    let titles = document.querySelectorAll("h1");
+
+    function generateTitles() {
+      titles.forEach((element) => {
+        element.textContent = "Titolo della lista";
+      });
+    }
+
+    function changeColor() {
+      window.addEventListener('click', function (event) {
+        let index = Math.floor(Math.random() * lista_colori.length);
+        titles.forEach((element) => {
+          element.style.color = lista_colori[index];
+        });
+      });
+    }
   </script>
 </body>
 

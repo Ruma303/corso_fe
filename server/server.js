@@ -46,4 +46,4 @@ app.listen(PORT, () => {
   console.log(`Server in ascolto sulla porta ${PORT}...`);
 }).on('error', err => {
   console.error(`Errore durante l'avvio del server: ${err.message}`);
-});
+})

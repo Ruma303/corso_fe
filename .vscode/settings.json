@@ -17,7 +17,7 @@
     {
       "splitTerminals": [
         {
-          "shouldRunCommands": false,
+          "shouldRunCommands": true,
           "restoreTerminals.artificialDelayMilliseconds": 1000,
           "name": "Server", // Terminale per avviare il server Node.js
           "commands": [

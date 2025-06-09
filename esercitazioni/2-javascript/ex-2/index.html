@@ -28,6 +28,14 @@
       border: none;
     }
 
+    button:hover {
+      background-color: #555;
+    }
+
+    button:active {
+      background-color: #777;
+    }
+
     .key {
       width: 40px;
     }
@@ -198,6 +206,8 @@
       window.addEventListener("click", (event) => {
         if (event.target.textContent === "Reset") {
           paragraph.textContent = " ";
+        } else if (event.target.textContent === "Space") {
+          paragraph.textContent += " ";
         } else if (event.target.tagName === "BUTTON") {
           paragraph.textContent += " " + event.target.textContent;
         }

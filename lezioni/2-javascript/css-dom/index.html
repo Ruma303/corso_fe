@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    .attiva {
+      background-color: green;
+      color: white;
+    }
+
+    .disattiva {
+      background-color: red;
+      color: white;
+    }
+  </style>
+  <!-- Gestone del CSS e delle classi in JavaScript -->
+  <script>
+    function changeClass() {
+      const div = document.querySelector('#mia_card');
+      if (div.classList.contains('disattiva')) {
+        div.classList.remove('disattiva');
+        div.classList.add('attiva');
+      } else {
+        div.classList.remove('attiva');
+        div.classList.add('disattiva');
+      }
+    }
+
+    const changeClassAgain = () => {
+      const div = document.querySelector('#mia_card');
+      /*
+      div.style.backgroundColor = 'blue';
+      div.style.border = '2px solid black';
+      div.style.fontSize = '20px';
+      */
+      /*
+      Mihai vorrebbe fare così:
+      div.style = {
+           backgroundColor: 'blue',
+           border: '2px solid black',
+           fontSize: '20px'
+      }
+       MA non funziona perché style è un oggetto e non un array
+       */
+      // SOLUZIONE
+      //div.setAttribute('style', 'background-color: blue; border: 2px solid black; font-size: 20px;');
+      Object.assign(div.style, {
+        backgroundColor: 'blue',
+        border: '2px solid black',
+        fontSize: '20px'
+      });
+    }
+  </script>
+
+  <div id="mia_card" class="disattiva">
+    Cambiamo questo stile
+  </div>
+  <br>
+  <button onclick="changeClass()">
+    Cambia stile card
+  </button>
+
+
+  <button onclick="changeClassAgain()">
+    Cambia stile card 2
+  </button>
+
+  <button onclick="
+    console.log('cliccato');
+    const div = document.querySelector('#mia_card');
+    div.style.backgroundColor = 'purple';
+    div.style.border = '2px solid black';
+    div.style.fontSize = '20px';
+  ">Cambia stile card 3</button>
+</body>
+
+</html>

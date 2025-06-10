@@ -50,12 +50,17 @@
        */
       // SOLUZIONE
       //div.setAttribute('style', 'background-color: blue; border: 2px solid black; font-size: 20px;');
-      Object.assign(div.style, {
+      const buttonStyle2 = Object.assign(div.style, {
         backgroundColor: 'blue',
         border: '2px solid black',
         fontSize: '20px'
       });
+      console.log("toString " + buttonStyle2.toString()) // [object Object] in formato stringa
+      console.log("hasOwnProperty('fontSize') " + buttonStyle2.hasOwnProperty('fontSize')); // true
+      console.log("isPrototypeOf(Object.prototype) " + buttonStyle2.isPrototypeOf(Object.prototype).toString()) // false
+      console.log(buttonStyle2.valueOf()) // [object Object] in formato oggetto
     }
+
   </script>
 
   <div id="mia_card" class="disattiva">

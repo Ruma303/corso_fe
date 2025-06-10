@@ -1,0 +1,88 @@
+<!-- Con HTML e CSS (ed eventualmente, se lo ritenete, Bootstrap)
+ed usando JavaScript
+Realizzare una app RUBRICA TELEFONICA!
+Prevedere:
+Inserimento di contatti (nome, cognome, email, cell e telefono)
+Rendere i dati personali variabili: partire suggerendo sempre questi, ma i dati devono essere rimuovibili e aggiungibili!
+Al salvataggio salvare nella struttura che va nello storage.
+...
+Visualizzare tutti.
+Effettuare ricerche.
+Modifiche possibili -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=scr, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="formdiv"></div>
+  <script>
+    let lista_dati_form = [
+      {
+        nome_campo: "nome",
+        tipo: "text",
+      },
+      {
+        nome_campo: "cognome",
+        tipo: "text",
+      },
+      {
+        nome_campo: "anni",
+        tipo: "number",
+      },
+      {
+        nome_campo: "email",
+        tipo: "email",
+      }
+    ];
+
+    function renderForm() {
+      const formDiv = document.getElementById("formdiv");
+      formDiv.innerHTML = ""; // Pulisce il contenuto precedente
+
+      const form = document.createElement("form");
+
+      lista_dati_form.forEach((campo, index) => {
+        const label = document.createElement("label");
+        label.textContent = campo.nome_campo.charAt(0).toUpperCase() + campo.nome_campo.slice(1);
+        form.appendChild(label);
+
+        const input = document.createElement("input");
+        input.type = campo.tipo;
+        input.name = campo.nome_campo;
+        input.id = campo.nome_campo;
+        input.required = true;
+        form.appendChild(input);
+        button_4_remove = document.createElement("button");
+        button_4_remove.textContent = "Rimuovi";
+        button_4_remove.type = "button";
+        button_4_remove.onclick = () => {
+          lista_dati_form.splice(index, 1);
+          renderForm();
+        };
+        form.appendChild(button_4_remove);
+        form.appendChild(document.createElement("br"));
+      });
+
+      const submitButton = document.createElement("button");
+      submitButton.type = "submit";
+      submitButton.textContent = "INVIA";
+      form.appendChild(submitButton);
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Form inviato con successo!");
+      });
+
+      formDiv.appendChild(form);
+    }
+    renderForm();
+  </script>
+</body>
+
+</html>

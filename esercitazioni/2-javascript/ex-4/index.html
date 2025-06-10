@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="">
+    <input type="text" id="nome" placeholder="Nome" />
+    <input type="text" id="cognome" placeholder="Cognome" />
+    <input type="number" id="anni" placeholder="Anni" />
+    <input type="email" id="email" placeholder="Email" />
+    <button id="salva">Salva</button>
+  </form>
+
+  <script>
+    let form = document.querySelector("form");
+    let button = document.querySelector("#salva");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      let nome = document.querySelector("#nome").value;
+      let cognome = document.querySelector("#cognome").value;
+      let email = document.querySelector("#email").value;
+      let anni = document.querySelector("#anni").value;
+
+      if (!nome || !cognome || !email || !anni) {
+        alert("Inserisci tutti i dati!");
+        return;
+      }
+
+      let data = {
+        nome: nome,
+        cognome: cognome,
+        email: email,
+        anni: anni,
+      };
+      let jsonData = JSON.stringify(data);
+      localStorage.setItem(nome, jsonData);
+      alert("Dati salvati con successo!");
+      location.reload();
+    });
+
+    let list = document.createElement("div");
+    form.appendChild(list);
+
+    let savedData = Object.keys(localStorage);
+
+    if (savedData.length == 0) {
+      let item = document.createElement("div");
+      item.textContent = "Nessun dato salvato";
+      list.appendChild(item);
+    } else {
+
+      // Mostrare i dati
+      savedData.forEach((key) => {
+        let data = JSON.parse(localStorage.getItem(key));
+        let item = document.createElement("div");
+        item.textContent = `Nome: ${data.nome}, Cognome: ${data.cognome}, Email: ${data.email}, Anni: ${data.anni}`;
+        list.appendChild(item);
+      });
+
+      // Creare pulsante di cancellazione
+      let deleteButton = document.createElement("button");
+      deleteButton.textContent = "Cancella tutti i dati";
+      deleteButton.addEventListener("click", function () {
+        localStorage.clear();
+        location.reload();
+      });
+      form.appendChild(deleteButton);
+    }
+  </script>
+</body>
+
+</html>

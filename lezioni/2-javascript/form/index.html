@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form handling</title>
+  <style>
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 20em;
+    }
+
+    form label,
+    form input,
+    form button {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <form action="">
+    <label for="name">Nome</label>
+    <input type="text" name="name">
+
+    <label for="cognome">Cognome</label>
+    <input type="text" name="cognome">
+
+    <label for="anni">Anni</label>
+    <input type="number" name="anni">
+
+
+    <label for="email">Email</label>
+    <input type="email" name="email">
+
+    <button type="submit">Invia</button>
+  </form>
+
+  <script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (!form.name.value || !form.cognome.value || !form.anni.value || !form.email.value) {
+        alert('Completa tutti i campi');
+        return;
+      }
+
+      const name = form.name.value;
+      const cognome = form.cognome.value;
+      const anni = form.anni.value;
+      const email = form.email.value;
+      alert('Utente registrato: ' + name + ' ' + cognome + ' ' + anni + ' ' + email);
+    });
+  </script>
+</body>
+</html>

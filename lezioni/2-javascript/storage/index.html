@@ -1,87 +1,95 @@
-<!-- Con HTML e CSS (ed eventualmente, se lo ritenete, Bootstrap)
-ed usando JavaScript
-Realizzare una app RUBRICA TELEFONICA!
-Prevedere:
-Inserimento di contatti (nome, cognome, email, cell e telefono)
-Rendere i dati personali variabili: partire suggerendo sempre questi, ma i dati devono essere rimuovibili e aggiungibili!
-Al salvataggio salvare nella struttura che va nello storage.
-...
-Visualizzare tutti.
-Effettuare ricerche.
-Modifiche possibili -->
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=scr, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
 </head>
 
 <body>
-  <div id="formdiv"></div>
+  <form>
+    <input type="text" id="nome" placeholder="Nome" />
+    <input type="text" id="cognome" placeholder="Cognome" />
+    <input type="number" id="anni" placeholder="Anni" />
+    <input type="email" id="email" placeholder="Email" />
+    <button id="salva">Salva</button>
+  </form>
+
   <script>
-    let lista_dati_form = [
-      {
-        nome_campo: "nome",
-        tipo: "text",
-      },
-      {
-        nome_campo: "cognome",
-        tipo: "text",
-      },
-      {
-        nome_campo: "anni",
-        tipo: "number",
-      },
-      {
-        nome_campo: "email",
-        tipo: "email",
+    let form = document.querySelector("form");
+    let button = document.querySelector("#salva");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      let nome = document.querySelector("#nome").value;
+      let cognome = document.querySelector("#cognome").value;
+      let email = document.querySelector("#email").value;
+      let anni = document.querySelector("#anni").value;
+
+      if (!nome || !cognome || !email || !anni) {
+        alert("Inserisci tutti i dati!");
+        return;
       }
-    ];
 
-    function renderForm() {
-      const formDiv = document.getElementById("formdiv");
-      formDiv.innerHTML = ""; // Pulisce il contenuto precedente
+      let data = {
+        nome: nome.toLowerCase().charAt(0).toUpperCase(),
+        cognome: cognome.toLowerCase().charAt(0).toUpperCase(),
+        email: email.toLowerCase(),
+        anni: parseInt(anni),
+      };
 
-      const form = document.createElement("form");
+      let jsonData = JSON.stringify(data);
+      localStorage.setItem(nome, jsonData);
 
-      lista_dati_form.forEach((campo, index) => {
-        const label = document.createElement("label");
-        label.textContent = campo.nome_campo.charAt(0).toUpperCase() + campo.nome_campo.slice(1);
-        form.appendChild(label);
+      // Salvataggio in database MySQL
+      fetch("http://localhost:3000/api/salva", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: jsonData,
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          alert(res.message);
+          localStorage.setItem(nome, jsonData);
+          location.reload();
+        })
+        .catch((err) => {
+          alert("Errore durante il salvataggio su database.");
+          console.error(err);
+        });
+    });
 
-        const input = document.createElement("input");
-        input.type = campo.tipo;
-        input.name = campo.nome_campo;
-        input.id = campo.nome_campo;
-        input.required = true;
-        form.appendChild(input);
-        button_4_remove = document.createElement("button");
-        button_4_remove.textContent = "Rimuovi";
-        button_4_remove.type = "button";
-        button_4_remove.onclick = () => {
-          lista_dati_form.splice(index, 1);
-          renderForm();
-        };
-        form.appendChild(button_4_remove);
-        form.appendChild(document.createElement("br"));
+    let list = document.createElement("div");
+    form.appendChild(list);
+
+    let savedData = Object.keys(localStorage);
+
+    if (savedData.length == 0) {
+      let item = document.createElement("div");
+      item.textContent = "Nessun dato salvato";
+      list.appendChild(item);
+    } else {
+
+      // Mostrare i dati
+      savedData.forEach((key) => {
+        let data = JSON.parse(localStorage.getItem(key));
+        let item = document.createElement("div");
+        item.textContent = `Nome: ${data.nome}, Cognome: ${data.cognome}, Email: ${data.email}, Anni: ${data.anni}`;
+        list.appendChild(item);
       });
 
-      const submitButton = document.createElement("button");
-      submitButton.type = "submit";
-      submitButton.textContent = "INVIA";
-      form.appendChild(submitButton);
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        alert("Form inviato con successo!");
+      // Creare pulsante di cancellazione
+      let deleteButton = document.createElement("button");
+      deleteButton.textContent = "Cancella tutti i dati";
+      deleteButton.addEventListener("click", function () {
+        localStorage.clear();
+        location.reload();
       });
-
-      formDiv.appendChild(form);
+      form.appendChild(deleteButton);
     }
-    renderForm();
   </script>
 </body>
 

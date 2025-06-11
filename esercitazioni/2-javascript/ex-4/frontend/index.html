@@ -16,13 +16,6 @@
     .removable-field {
       position: relative;
     }
-
-    .remove-btn {
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 1;
-    }
   </style>
 </head>
 
@@ -159,167 +152,258 @@
       </div>
     </div>
   </div>
-
   <script>
-    const form = document.querySelector("#contactForm");
-    const contactList = document.querySelector("#contactList");
-    const toggleFormBtn = document.querySelector("#toggleForm");
-    const extraFieldsContainer = document.querySelector("#extraFields");
-    const addFieldBtn = document.querySelector("#addField");
-    const newFieldNameInput = document.querySelector("#newFieldName");
-    const newFieldLabelInput = document.querySelector("#newFieldLabel");
-    const newFieldTypeSelect = document.querySelector("#newFieldType");
+    (function () {
+      const form = document.querySelector("#contactForm");
+      const contactList = document.querySelector("#contactList");
+      const toggleFormBtn = document.querySelector("#toggleForm");
+      const extraFieldsContainer = document.querySelector("#extraFields");
+      const addFieldBtn = document.querySelector("#addField");
+      const newFieldLabelInput = document.querySelector("#newFieldLabel");
+      const newFieldTypeSelect = document.querySelector("#newFieldType");
+      const newFieldNameInput = document.querySelector("#newFieldName");
 
-    const updateModal = new bootstrap.Modal(document.querySelector('#updateFieldModal'));
-    const uLabel = document.querySelector('#updateFieldLabel');
-    const uType = document.querySelector('#updateFieldType');
-    const uValue = document.querySelector('#updateFieldValue');
-    const uKey = document.querySelector('#updateKey');
-    const updateForm = document.querySelector('#updateFieldForm');
+      let editingKey = null;
 
-    const deleteModal = new bootstrap.Modal(document.querySelector('#deleteConfirmModal'));
-    const confirmDeleteBtn = document.querySelector("#confirmDeleteBtn");
-    let keyToDelete = null;
+      // === FUNZIONI RUBRICA ===
 
-    // Toggle form/list
-    toggleFormBtn.addEventListener("click", () => {
-      form.classList.toggle("d-none");
-      contactList.classList.toggle("d-none");
-    });
-
-    // Aggiungi campo dinamico nel form
-    addFieldBtn.addEventListener("click", () => {
-      const label = newFieldLabelInput.value.trim();
-      if (!label) return;
-      const type = newFieldTypeSelect.value;
-      const id = `field-${label.replace(/\s+/g, '-').toLowerCase()}`;
-      const wrapper = document.createElement("div");
-      wrapper.className = "mb-3 removable-field";
-      wrapper.innerHTML = `
-      <label for="${id}" class="form-label">${label}</label>
-      <input type="${type}" class="form-control" name="${label}" id="${id}" value="${newFieldNameInput.value.trim()}">
-      <button type="button" class="btn btn-sm btn-danger remove-btn mt-1">Elimina</button>`;
-      extraFieldsContainer.appendChild(wrapper);
-      wrapper.querySelector(".remove-btn").onclick = () => wrapper.remove();
-      newFieldLabelInput.value = "";
-      newFieldNameInput.value = "";
-      newFieldTypeSelect.value = "text";
-      newFieldNameInput.type = "text";
-      bootstrap.Modal.getInstance(document.getElementById('addFieldModal')).hide();
-    });
-
-    // Salva nuovo contatto in localStorage
-    form.addEventListener("submit", e => {
-      e.preventDefault();
-      const nome = form.nome.value.trim();
-      if (!nome) { alert("Nome obbligatorio"); return; }
-      const data = {
-        nome: nome,
-        cognome: form.cognome.value.trim(),
-        email: form.email.value.trim(),
-        anni: form.anni.value.trim()
-      };
-      // campi extra
-      extraFieldsContainer.querySelectorAll("input").forEach(input => {
-        const lbl = input.previousElementSibling.textContent.trim();
-        data[lbl] = input.value;
-      });
-      localStorage.setItem(nome, JSON.stringify(data));
-      form.reset();
-      extraFieldsContainer.innerHTML = "";
-      form.classList.add("d-none");
-      contactList.classList.remove("d-none");
-      render();
-    });
-
-    // Render di tutti i contatti
-    function render() {
-      contactList.innerHTML = "";
-      const keys = Object.keys(localStorage);
-      if (keys.length === 0) {
-        contactList.textContent = "Nessun contatto salvato.";
-        return;
+      function aggiungiContatto(data) {
+        const rubrica = leggiRubrica();
+        rubrica.push(data);
+        localStorage.setItem("rubrica", JSON.stringify(rubrica));
       }
-      keys.forEach(key => {
-        const data = JSON.parse(localStorage.getItem(key));
-        const card = document.createElement("div");
-        card.className = "card mb-2";
-        const body = document.createElement("div");
-        body.className = "card-body";
-        body.innerHTML = `<h5 class="card-title">${data.nome} ${data.cognome}</h5>`;
-        Object.entries(data).forEach(([field, val]) => {
-          if (["nome", "cognome"].includes(field)) return;
-          const p = document.createElement("p");
-          p.className = "card-text mb-1";
-          p.innerHTML = `<strong>${field}:</strong>
-          <span id="val-${key}-${field}">${val}</span>
-          <button class="btn btn-warning btn-sm ms-2" data-key="${key}" data-field="${field}">Aggiorna</button>`;
-          body.appendChild(p);
-        });
-        const del = document.createElement("button");
-        del.className = "btn btn-danger btn-sm mt-2";
-        del.textContent = "Elimina Contatto";
-        del.setAttribute("data-key", key);
-        del.setAttribute("data-bs-toggle", "modal");
-        del.setAttribute("data-bs-target", "#deleteConfirmModal");
-        body.appendChild(del);
-        card.appendChild(body);
-        contactList.appendChild(card);
+
+      function leggiRubrica() {
+        return JSON.parse(localStorage.getItem("rubrica")) || [];
+      }
+
+      function aggiornaContatto(nome, nuoviDati) {
+        const rubrica = leggiRubrica();
+        const indice = rubrica.findIndex(c => c.nome === nome);
+        if (indice !== -1) {
+          rubrica[indice] = { ...rubrica[indice], ...nuoviDati };
+          localStorage.setItem("rubrica", JSON.stringify(rubrica));
+        }
+      }
+
+      function eliminaContatto(nome) {
+        let rubrica = leggiRubrica();
+        rubrica = rubrica.filter(c => c.nome !== nome);
+        localStorage.setItem("rubrica", JSON.stringify(rubrica));
+      }
+
+      // === TOGGLE FORM ===
+
+      toggleFormBtn.addEventListener("click", () => {
+        editingKey = null;
+        form.reset();
+        extraFieldsContainer.innerHTML = "";
+        form.classList.toggle("d-none");
+        contactList.classList.toggle("d-none");
       });
 
-      // Aggiorna
-      contactList.querySelectorAll("button[data-field]").forEach(btn => {
-        btn.onclick = e => {
-          const key = e.target.dataset.key;
-          const field = e.target.dataset.field;
-          const data = JSON.parse(localStorage.getItem(key));
-          uLabel.value = field;
-          uType.value = getType(data[field]);
-          uValue.type = uType.value;
-          uValue.value = data[field];
-          uKey.value = key;
-          uValue.dataset.field = field;
-          updateModal.show();
+      // === AGGIUNTA CAMPO PERSONALIZZATO ===
+
+      addFieldBtn.addEventListener("click", () => {
+        const label = newFieldLabelInput.value.trim();
+        if (!label) return;
+        const type = newFieldTypeSelect.value;
+        const value = newFieldNameInput.value.trim();
+        const id = `field-${label.replace(/\s+/g, '-').toLowerCase()}`;
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "mb-3 removable-field";
+        wrapper.innerHTML = `
+        <label for="${id}" class="form-label">${label}</label>
+        <div class="d-flex gap-2">
+          <input type="${type}" class="form-control" name="${label}" id="${id}" value="${value}" data-field-type="${type}" data-field-label="${label}">
+          <button type="button" class="btn btn-sm btn-danger remove-btn">Elimina</button>
+        </div>
+      `;
+        extraFieldsContainer.appendChild(wrapper);
+        wrapper.querySelector(".remove-btn").onclick = () => wrapper.remove();
+
+        // Reset form
+        newFieldLabelInput.value = "";
+        newFieldNameInput.value = "";
+        newFieldTypeSelect.value = "text";
+
+        // Chiudi modal
+        bootstrap.Modal.getInstance(document.getElementById('addFieldModal')).hide();
+      });
+
+      // === INVIO FORM ===
+
+      form.addEventListener("submit", e => {
+        e.preventDefault();
+        const nome = form.nome.value.trim();
+        if (!nome) return alert("Nome obbligatorio");
+
+        const cognome = form.cognome.value.trim();
+        const email = form.email.value.trim();
+        const anni = form.anni.value.trim();
+        if (!cognome || !email || !anni) return alert("Compila tutti i campi");
+
+        // Costruisci oggetto dati con metadati per i tipi
+        const data = {
+          nome,
+          cognome,
+          email,
+          anni,
+          _fieldTypes: {} // Metadati per i tipi di campo
         };
-      });
 
-      // Elimina
-      contactList.querySelectorAll("button[data-bs-target='#deleteConfirmModal']").forEach(btn => {
-        btn.onclick = e => keyToDelete = e.target.dataset.key;
-      });
-    }
+        // Aggiungi campi extra con i loro tipi
+        extraFieldsContainer.querySelectorAll("input[data-field-label]").forEach(input => {
+          const label = input.getAttribute('data-field-label');
+          const fieldType = input.getAttribute('data-field-type');
+          data[label] = input.value;
+          data._fieldTypes[label] = fieldType;
+        });
 
-    function getType(val) {
-      if (/^\d{4}-\d{2}-\d{2}$/.test(val)) return "date";
-      if (!isNaN(val)) return "number";
-      return "text";
-    }
+        if (editingKey === null) {
+          aggiungiContatto(data);
+        } else {
+          aggiornaContatto(editingKey, data);
+        }
 
-    // Submit modale Aggiorna
-    updateForm.addEventListener("submit", e => {
-      e.preventDefault();
-      const key = uKey.value;
-      const field = uValue.dataset.field;
-      const data = JSON.parse(localStorage.getItem(key));
-      data[field] = uValue.value.trim();
-      localStorage.setItem(key, JSON.stringify(data));
-      updateModal.hide();
-      render();
-    });
-
-    // Conferma Eliminazione
-    confirmDeleteBtn.addEventListener("click", () => {
-      if (keyToDelete) {
-        localStorage.removeItem(keyToDelete);
-        keyToDelete = null;
-        deleteModal.hide();
+        editingKey = null;
+        form.reset();
+        extraFieldsContainer.innerHTML = "";
+        form.classList.add("d-none");
+        contactList.classList.remove("d-none");
         render();
-      }
-    });
+      });
 
-    // Inizializza
-    render();
+      // === RENDER CONTATTI ===
+
+      function render() {
+        contactList.innerHTML = "";
+        const rubrica = leggiRubrica();
+        if (rubrica.length === 0) {
+          contactList.textContent = "Nessun contatto salvato.";
+          return;
+        }
+
+        rubrica.forEach(data => {
+          const key = data.nome;
+          const card = document.createElement("div");
+          card.className = "card mb-2";
+
+          const body = document.createElement("div");
+          body.className = "card-body";
+          body.innerHTML = `<h5 class="card-title">${data.nome} ${data.cognome}</h5>`;
+
+          Object.entries(data).forEach(([field, val]) => {
+            if (["_fieldTypes"].includes(field)) return;
+            const p = document.createElement("p");
+            p.className = "card-text mb-1";
+            p.innerHTML = `<strong>${field}:</strong> ${val}`;
+            body.appendChild(p);
+          });
+
+          const btns = document.createElement("div");
+          btns.className = "mt-2";
+
+          const upd = document.createElement("button");
+          upd.className = "btn btn-warning btn-sm me-2";
+          upd.textContent = "Aggiorna Contatto";
+          upd.onclick = () => openEditForm(data.nome);
+          btns.appendChild(upd);
+
+          const del = document.createElement("button");
+          del.className = "btn btn-danger btn-sm";
+          del.textContent = "Elimina Contatto";
+          del.onclick = () => confirmDelete(data.nome);
+          btns.appendChild(del);
+
+          body.appendChild(btns);
+          card.appendChild(body);
+          contactList.appendChild(card);
+        });
+      }
+
+      // === MODIFICA ===
+
+      function openEditForm(key) {
+        const contatto = leggiRubrica().find(c => c.nome === key);
+        if (!contatto) return;
+
+        editingKey = key;
+        form.nome.value = contatto.nome;
+        form.cognome.value = contatto.cognome;
+        form.email.value = contatto.email;
+        form.anni.value = contatto.anni;
+
+        extraFieldsContainer.innerHTML = "";
+        Object.entries(contatto).forEach(([field, val]) => {
+          if (["nome", "cognome", "email", "anni", "_fieldTypes"].includes(field)) return;
+
+          // Determina il tipo di campo
+          let fieldType = 'text'; // default
+          if (contatto._fieldTypes && contatto._fieldTypes[field]) {
+            fieldType = contatto._fieldTypes[field];
+          } else {
+            // Fallback: cerca di inferire il tipo dal valore
+            fieldType = getType(val);
+          }
+
+          const id = `field-${field.replace(/\s+/g, '-').toLowerCase()}`;
+          const wrapper = document.createElement("div");
+          wrapper.className = "row mb-3";
+          wrapper.innerHTML = `
+          <label for="${id}" class="col-sm-2 col-form-label">${field}</label>
+          <div class="col-sm-10 d-flex align-items-center gap-2">
+            <input type="${fieldType}" class="form-control" name="${field}" id="${id}" value="${val}" data-field-type="${fieldType}" data-field-label="${field}">
+            <button type="button" class="btn btn-sm btn-danger remove-btn">Elimina</button>
+          </div>
+        `;
+          extraFieldsContainer.appendChild(wrapper);
+          wrapper.querySelector(".remove-btn").onclick = () => wrapper.remove();
+        });
+
+        form.classList.remove("d-none");
+        contactList.classList.add("d-none");
+      }
+
+      // === TIPO INPUT PER MODIFICA ===
+
+      function getType(v) {
+        if (!v) return "text";
+
+        // Controlla se è una data in formato ISO (YYYY-MM-DD)
+        if (/^\d{4}-\d{2}-\d{2}$/.test(v)) return "date";
+
+        // Controlla se è un numero
+        if (/^\d+$/.test(v)) return "number";
+
+        // Controlla se è un telefono (solo cifre con possibili spazi/trattini)
+        if (/^[\d\s\-\+\(\)]+$/.test(v) && v.length >= 6) return "tel";
+
+        // Controlla se è un'email
+        if (/^\S+@\S+\.\S+$/.test(v)) return "email";
+
+        // Controlla se è un URL
+        if (/^https?:\/\//.test(v)) return "url";
+
+        return "text";
+      }
+
+      // === CONFERMA ELIMINAZIONE ===
+
+      function confirmDelete(key) {
+        if (confirm("Sei sicuro di eliminare questo contatto?")) {
+          eliminaContatto(key);
+          render();
+        }
+      }
+
+      // === INIZIALIZZA ===
+
+      render();
+    })();
   </script>
+
 
 </body>
 

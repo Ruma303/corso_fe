@@ -181,7 +181,7 @@
         const rubrica = leggiRubrica();
         const indice = rubrica.findIndex(c => c.nome === nome);
         if (indice !== -1) {
-          rubrica[indice] = { ...rubrica[indice], ...nuoviDati };
+          rubrica[indice] = { ...nuoviDati };
           localStorage.setItem("rubrica", JSON.stringify(rubrica));
         }
       }
@@ -400,6 +400,8 @@
 
       // === INIZIALIZZA ===
 
+      console.warn("Lista dei contatti esistenti:");
+      console.table(leggiRubrica());
       render();
     })();
   </script>

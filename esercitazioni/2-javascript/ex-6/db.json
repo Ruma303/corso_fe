@@ -1,0 +1,206 @@
+{
+  "libri": [
+    {
+      "id": "1",
+      "titolo": "Divina Commedia",
+      "autore": "Dante Alighieri"
+    },
+    {
+      "id": "2",
+      "titolo": "Amleto",
+      "autore": "William Shakespeare"
+    },
+    {
+      "id": "3",
+      "titolo": "Orgoglio e Pregiudizio",
+      "autore": "Jane Austen"
+    },
+    {
+      "id": "4",
+      "titolo": "La Metamorfosi",
+      "autore": "Franz Kafka"
+    },
+    {
+      "id": "5",
+      "titolo": "Gita al Faro",
+      "autore": "Virginia Woolf"
+    },
+    {
+      "id": "6",
+      "titolo": "Cent'anni di solitudine",
+      "autore": "Gabriel García Márquez"
+    },
+    {
+      "id": "7",
+      "titolo": "Norwegian Wood",
+      "autore": "Haruki Murakami"
+    },
+    {
+      "id": "8",
+      "titolo": "1984",
+      "autore": "George Orwell"
+    },
+    {
+      "id": "9",
+      "titolo": "Guerra e Pace",
+      "autore": "Lev Tolstoj"
+    },
+    {
+      "id": "10",
+      "titolo": "Il barone rampante",
+      "autore": "Italo Calvino"
+    },
+    {
+      "id": "11",
+      "titolo": "Inferno",
+      "autore": "Dante Alighieri"
+    },
+    {
+      "id": "12",
+      "titolo": "Macbeth",
+      "autore": "William Shakespeare"
+    },
+    {
+      "id": "13",
+      "titolo": "Emma",
+      "autore": "Jane Austen"
+    },
+    {
+      "id": "14",
+      "titolo": "Il Processo",
+      "autore": "Franz Kafka"
+    },
+    {
+      "id": "15",
+      "titolo": "Orlando",
+      "autore": "Virginia Woolf"
+    },
+    {
+      "id": "16",
+      "titolo": "L'amore ai tempi del colera",
+      "autore": "Gabriel García Márquez"
+    },
+    {
+      "id": "17",
+      "titolo": "Kafka sulla spiaggia",
+      "autore": "Haruki Murakami"
+    },
+    {
+      "id": "18",
+      "titolo": "La fattoria degli animali",
+      "autore": "George Orwell"
+    },
+    {
+      "id": "19",
+      "titolo": "Anna Karenina",
+      "autore": "Lev Tolstoj"
+    },
+    {
+      "id": "20",
+      "titolo": "Le città invisibili",
+      "autore": "Italo Calvino"
+    },
+    {
+      "id": "8e82"
+    },
+    {
+      "id": "ca03"
+    },
+    {
+      "id": "359c"
+    },
+    {
+      "id": "e133"
+    },
+    {
+      "id": "b382"
+    },
+    {
+      "id": "9537"
+    },
+    {
+      "id": "cd0a"
+    },
+    {
+      "id": "579f"
+    },
+    {
+      "id": "9f37"
+    },
+    {
+      "id": "1076"
+    },
+    {
+      "id": "5dbc"
+    },
+    {
+      "id": "fcbe"
+    },
+    {
+      "id": "72d3"
+    },
+    {
+      "id": "2212"
+    },
+    {
+      "id": "605e"
+    },
+    {
+      "id": "1216"
+    },
+    {
+      "id": "f114"
+    },
+    {
+      "id": "3bee"
+    },
+    {
+      "id": "c19d"
+    },
+    {
+      "id": "6cf4"
+    }
+  ],
+  "autori": [
+    {
+      "id": "1",
+      "nome": "Dante Alighieri"
+    },
+    {
+      "id": "2",
+      "nome": "William Shakespeare"
+    },
+    {
+      "id": "3",
+      "nome": "Jane Austen"
+    },
+    {
+      "id": "4",
+      "nome": "Franz Kafka"
+    },
+    {
+      "id": "5",
+      "nome": "Virginia Woolf"
+    },
+    {
+      "id": "6",
+      "nome": "Gabriel García Márquez"
+    },
+    {
+      "id": "7",
+      "nome": "Haruki Murakami"
+    },
+    {
+      "id": "8",
+      "nome": "George Orwell"
+    },
+    {
+      "id": "9",
+      "nome": "Lev Tolstoj"
+    },
+    {
+      "id": "10",
+      "nome": "Italo Calvino"
+    }
+  ]
+}

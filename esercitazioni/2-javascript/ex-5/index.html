@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+  <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+
+  <title>🐝🐝🐝 Client</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    select,
+    input,
+    textarea,
+    button {
+      width: 100%;
+      margin-top: 5px;
+      padding: 8px;
+      font-size: 14px;
+    }
+
+    #response {
+      margin-top: 20px;
+      background: #fff;
+      padding: 15px;
+      border: 1px solid #ccc;
+      white-space: pre-wrap;
+    }
+
+    #controls {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+    }
+
+    #display-area {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🐝🐝🐝 Client</h1>
+
+  <label for="method">Metodo:</label>
+  <select id="method">
+    <option>GET</option>
+    <option>POST</option>
+    <option>PUT</option>
+    <option>DELETE</option>
+  </select>
+
+  <label for="url">URL:</label>
+  <small>Esempio con JSONPlaceholder</small>
+  <input type="text" id="url" value="https://jsonplaceholder.typicode.com/posts">
+
+  <label for="body">Corpo della richiesta (JSON):</label>
+  <textarea id="body" rows="5" placeholder='{ "title": "foo", "body": "bar", "userId": 1 }'></textarea>
+
+  <button onclick="sendRequest()">Invia richiesta</button>
+
+  <div id="response"></div>
+
+  <div id="controls" style="display: none;">
+    <button onclick="showTable()">Mostra Tabella</button>
+    <button onclick="showJson()">Mostra JSON</button>
+  </div>
+
+  <div id="display-area"></div>
+
+  <script>
+    let jsonData = null;
+    let gridInstance = null;
+
+    async function sendRequest() {
+      const method = document.getElementById('method').value;
+      const url = document.getElementById('url').value;
+      const body = document.getElementById('body').value.trim();
+      const responseBox = document.getElementById('response');
+      const displayArea = document.getElementById('display-area');
+      const controls = document.getElementById('controls');
+
+      responseBox.textContent = "Invio richiesta...";
+      displayArea.innerHTML = "";
+      jsonData = null;
+      gridInstance = null;
+      controls.style.display = "none";
+
+      try {
+        const options = {
+          method,
+          headers: { 'Content-Type': 'application/json' }
+        };
+
+        if (method !== 'GET' && method !== 'DELETE' && body) {
+          options.body = body;
+        }
+
+        const res = await fetch(url, options);
+        const contentType = res.headers.get('Content-Type') || "";
+
+        if (contentType.includes('application/json')) {
+          jsonData = await res.json();
+          responseBox.textContent =
+            `Status: ${res.status} ${res.statusText}\nContent-Type: ${contentType}\n\nJSON ricevuto.`;
+
+          controls.style.display = "flex";
+          showTable();
+        } else {
+          const text = await res.text();
+          responseBox.textContent = `Status: ${res.status} ${res.statusText}\n\n${text}`;
+        }
+      } catch (err) {
+        responseBox.textContent = "Errore: " + err.message;
+      }
+    }
+
+    function showTable() {
+      const container = document.getElementById('display-area');
+
+      // Ricrea completamente il contenuto del display-area
+      const newContainer = document.createElement('div');
+      newContainer.id = 'display-area';
+
+      container.replaceWith(newContainer);
+
+      if (!Array.isArray(jsonData)) {
+        newContainer.innerHTML = "<p>I dati non sono in formato array di oggetti.</p>";
+        return;
+      }
+
+      const columns = Object.keys(jsonData[0]);
+      const data = jsonData.map(obj => columns.map(key => obj[key]));
+
+      gridInstance = new gridjs.Grid({
+        columns,
+        data,
+        pagination: { enabled: true, limit: 10 },
+        sort: true,
+        search: true
+      });
+
+      gridInstance.render(newContainer);
+    }
+
+
+    function showJson() {
+      const displayArea = document.getElementById('display-area');
+      displayArea.innerHTML = `<pre>${JSON.stringify(jsonData, null, 2)}</pre>`;
+    }
+  </script>
+</body>
+
+</html>

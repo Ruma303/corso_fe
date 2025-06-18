@@ -1,0 +1,14 @@
+.display {
+  min-width: 100%;
+  background-color: black;
+  min-height: 4em;
+  border-radius: 12px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.display-value {
+  color: white;
+  padding: 0.5em 1em;
+}

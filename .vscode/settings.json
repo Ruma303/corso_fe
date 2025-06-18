@@ -1,15 +1,14 @@
 {
-  "restoreTerminals.runOnStartup": true, // Impostando questo comando di sotto su true si avvieranno questi terminali sotto all'avvio di questa repo.
+  "restoreTerminals.runOnStartup": true,
   "restoreTerminals.terminals": [
     {
       "splitTerminals": [
         {
-          "shouldRunCommands": false, //* Se impostato su true, i comandi sotto verranno eseguiti all'avvio del terminale
+          "shouldRunCommands": true,
           "restoreTerminals.artificialDelayMilliseconds": 1000, //! Ritardo di attivazione terminale
-          "name": "My terminal", // Terminale dove possiamo scrivere comandi personalizzati
+          "name": "My terminal",
           "commands": [
-            "",
-            ""
+            "git status",
           ]
         }
       ]

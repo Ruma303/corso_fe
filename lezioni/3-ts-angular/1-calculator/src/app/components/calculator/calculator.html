@@ -1,1 +1,8 @@
-<p>calculator works!</p>
+<section class="calculator-container">
+  <app-display [value]="current"></app-display>
+  <div>
+    <app-button [val]="1" (pressed)="onButton($event)"></app-button>
+    <app-button [val]="2" (pressed)="onButton($event)"></app-button>
+    <app-button [val]="3" (pressed)="onButton($event)"></app-button>
+  </div>
+</section>

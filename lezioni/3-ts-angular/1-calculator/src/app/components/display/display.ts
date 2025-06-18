@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-display',
-  imports: [],
   templateUrl: './display.html',
-  styleUrl: './display.css'
+  styleUrls: ['./display.css'],
+  standalone: true
 })
-export class Display {
-
+export class DisplayComponent {
+  @Input() value = '';
 }

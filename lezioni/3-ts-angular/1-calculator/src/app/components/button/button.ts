@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-button',
-  imports: [],
   templateUrl: './button.html',
-  styleUrl: './button.css'
+  styleUrls: ['./button.css'],
+  standalone: true
 })
-export class Button {
+export class ButtonComponent {
+  @Input() val!: number;
+  @Output() pressed = new EventEmitter<number>();
 
+  onClick() {
+    this.pressed.emit(this.val);
+  }
 }

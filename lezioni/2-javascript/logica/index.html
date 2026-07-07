@@ -10,7 +10,7 @@
   function caricaImmagine() {
     let p = new Promise((resolve, reject) => {
       const img = new Image();
-      img.src = '../../assets/images/image.jpg';
+      img.src = '../../../assets/images/image.jpg';
       img.style.maxWidth = '200px';
       img.style.maxHeight = '200px';
       img.onload = () => resolve(img);
@@ -28,7 +28,8 @@
 
 <body>
   <h1>SENZA TRUCCO E SENZA INGANNO</h1>
-  <button onclick="caricaImmagine()">CARICA</button>
+  <button onclick="caricaImmagine()">CARICA IMMAGINE</button>
+  <br/>
 </body>
 
 </html>
